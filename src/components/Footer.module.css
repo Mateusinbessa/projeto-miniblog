@@ -1,0 +1,8 @@
+.footer {
+    height: 250px;
+    display: flex; /*Ganharem a propriedade de flex blox*/
+    flex-direction: column;
+    align-items: center; /*Alinha na horizontal*/
+    justify-content: center; /*Alinha na vertical*/
+    background-color: #edf3f6;
+}
