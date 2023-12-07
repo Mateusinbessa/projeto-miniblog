@@ -1,0 +1,4 @@
+.container {
+  min-height: 60vh; /*Altura miníma 60% da tela do usuário*/
+  margin-bottom: 5em; /*Afastar os elementos inferiores desse container*/
+}
