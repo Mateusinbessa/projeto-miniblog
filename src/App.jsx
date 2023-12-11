@@ -20,14 +20,15 @@ import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 
 //context
-import { AuthProvider } from '../context/AuthContext'
+import { AuthProvider } from './context/AuthContext'
+import CreatePost from './pages/CreatePost/CreatePost'
+import Dashboard from './pages/Dashboard/Dashboard'
 
 function App() {
 
   const [user, setUser] = useState(undefined)
   const {auth} = useAuthentication()
 
-  const loadingUser = user === undefined
 
   //mapeio a auth constantemente!
   useEffect(() => {
@@ -36,7 +37,7 @@ function App() {
     })
   }, [auth])
 
-  if (loadingUser) {
+  if (!user) {
     return <p>Carregando...</p>
   }
 
@@ -52,6 +53,8 @@ function App() {
               <Route path='/about' element={<About />} />
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
+              <Route path='/posts/create' element={<CreatePost />} />
+              <Route path='/dashboard' element={<Dashboard />} />
             </Routes>
           </div>
           <Footer />
