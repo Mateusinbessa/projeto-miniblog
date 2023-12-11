@@ -9,7 +9,7 @@ const Login = () => {
   const [password, setPassWord] = useState("")
   const [error, setError] = useState("")
 
-  const { createUser, error: authError, loading } = useAuthentication()
+  const { login, error: authError, loading } = useAuthentication()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -17,16 +17,13 @@ const Login = () => {
     setError("")
 
     const user = {
-      displayName,
       email,
       password
     }
 
-    const res = await createUser(user)
-
+    const res = await login(user)
   }
 
-  //mapeando authError, pra sempre que ele receber um valor eu colocar essa valor no meu state de erro!
   useEffect(() => {
     if (authError) {
       setError(authError)
