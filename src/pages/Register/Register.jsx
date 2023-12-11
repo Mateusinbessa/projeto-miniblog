@@ -11,11 +11,11 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("")
   const [error, setError] = useState("")
 
-  const {createUser, error: authError, loading} = useAuthentication()
+  const { createUser, error: authError, loading } = useAuthentication()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
+
     setError("")
 
     const user = {
@@ -25,7 +25,7 @@ const Register = () => {
     }
 
     //validation
-    if(password !== confirmPassword) {
+    if (password !== confirmPassword) {
       setError("As senhas precisam ser iguais!")
       return
     }
@@ -36,7 +36,7 @@ const Register = () => {
 
   //mapeando authError, pra sempre que ele receber um valor eu colocar essa valor no meu state de erro!
   useEffect(() => {
-    if(authError) {
+    if (authError) {
       setError(authError)
     }
   }, [authError])
@@ -48,21 +48,21 @@ const Register = () => {
       <form onSubmit={handleSubmit}>
         <label>
           <span>Nome:</span>
-          <input 
-            type="text" 
-            name="displayName" 
-            required 
-            placeholder="Nome do usuário" 
-            value={displayName} 
+          <input
+            type="text"
+            name="displayName"
+            required
+            placeholder="Nome do usuário"
+            value={displayName}
             onChange={(e) => setDisplayName(e.target.value)} />
         </label>
 
         <label>
           <span>Email:</span>
-          <input 
-            type="email" 
-            name="email" 
-            required 
+          <input
+            type="email"
+            name="email"
+            required
             placeholder="E-mail do usuário"
             value={email}
             onChange={(e) => setEmail(e.target.value)} />
@@ -70,10 +70,10 @@ const Register = () => {
 
         <label>
           <span>Senha:</span>
-          <input 
-            type="password" 
-            name="password" 
-            required 
+          <input
+            type="password"
+            name="password"
+            required
             placeholder="Insira sua senha"
             value={password}
             onChange={(e) => setPassWord(e.target.value)} />
@@ -81,10 +81,10 @@ const Register = () => {
 
         <label>
           <span>Confirmação de senha:</span>
-          <input 
-            type="password" 
-            name="confirmPassword" 
-            required 
+          <input
+            type="password"
+            name="confirmPassword"
+            required
             placeholder="Confirme a sua senha"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)} />
