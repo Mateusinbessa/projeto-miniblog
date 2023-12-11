@@ -29,6 +29,7 @@ function App() {
   const [user, setUser] = useState(undefined)
   const {auth} = useAuthentication()
 
+  const loadingUser = user === undefined
 
   //mapeio a auth constantemente!
   useEffect(() => {
@@ -37,7 +38,7 @@ function App() {
     })
   }, [auth])
 
-  if (!user) {
+  if (loadingUser) {
     return <p>Carregando...</p>
   }
 
