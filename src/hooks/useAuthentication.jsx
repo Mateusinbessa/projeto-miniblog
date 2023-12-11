@@ -22,7 +22,7 @@ export const useAuthentication = () => {
     const auth = getAuth()
 
     function checkIfIsCancelled() {
-        if(cancelled) {
+        if (cancelled) {
             return
         }
     }
@@ -36,7 +36,7 @@ export const useAuthentication = () => {
         //essa aqui é a estrutura do firebase pra criação de um user, é irrelevante pq a gente que vai criar nossa própria API futuramente.
         //no firebase eu não posso criar um usuário com um nome, tenho que criar somente com email e senha e depois dar um update nele.
         try {
-            const {user} = await createUserWithEmailAndPassword(
+            const { user } = await createUserWithEmailAndPassword(
                 auth,
                 data.email,
                 data.password
@@ -45,14 +45,14 @@ export const useAuthentication = () => {
             await updateProfile(user, {
                 displayName: data.displayName
             })
-            
+
             setLoading(false)
             return user
         } catch (error) {
             console.log(error.message)
             let systemErrorMessage
 
-            if(error.message.includes("Password")) {
+            if (error.message.includes("Password")) {
                 systemErrorMessage = "A senha precisa conter pelo menos 6 caractéres"
             } else if (error.message.includes("email-already")) {
                 systemErrorMessage = "E-mail já cadastrado"
@@ -67,5 +67,5 @@ export const useAuthentication = () => {
         return () => setCancelled(true)
     }, [])
 
-    return {auth, createUser, error, loading}
+    return { auth, createUser, error, loading }
 }
